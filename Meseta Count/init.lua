@@ -93,6 +93,8 @@ local function present()
   end
 
   if options.mcEnableWindow then
+    imgui.SetNextWindowSize(130, 50, "FirstUseEver");
+    
     if imgui.Begin("Meseta Count", nil, { options.mcNoTitleBar, options.mcNoResize }) then
       imgui.SetWindowFontScale(options.fontScale)
       showMesetaCount();
@@ -117,7 +119,7 @@ local function init()
   
   return {
     name = "Meseta Count",
-    version = "1.0.0",
+    version = "1.0.1",
     author = "Seth Clydesdale",
     description = "Displays the total Meseta you're carrying.",
     present = present
