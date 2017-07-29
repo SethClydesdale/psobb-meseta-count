@@ -11,6 +11,9 @@ This is a simple addon for https://github.com/HybridEidolon/psobbaddonplugin. It
 
 ### Change Log
 
+#### v1.1.1
+- Fixed incorrect Meseta value displaying when the player was the 2nd, 3rd, etc.. player in the lobby. (thanks to soly and staphen for helping me find the correct index)
+
 #### v1.1.0
 - Added Meseta Goal progress bar to help visualize how close you are to your goal. The bar will turn green when you've hit your goal.
 - Added Colorize Text so the user can choose between the standard white text or colored text.

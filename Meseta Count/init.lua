@@ -58,17 +58,18 @@ local function SaveOptions(options)
   end
 end
 
-
--- pointer
-local _MesetaPtr = 0x00A94254
+-- player data
+local _PlayerArray = 0x00A94254
+local _PlayerIndex = 0x00A9C4F4
 
 -- shows the meseta count
 local showMesetaCount = function()
-  local ptrAddr = pso.read_u32(_MesetaPtr)
+  local playerIndex = pso.read_u32(_PlayerIndex)
+  local playerAddr = pso.read_u32(_PlayerArray + 4 * playerIndex)
   
-  if ptrAddr ~= 0 then
-    local mesetaAddr = pso.read_u32(ptrAddr + 0x2B4)
-    local meseta = pso.read_u32(mesetaAddr + 0x20)
+  if playerAddr ~= 0 then
+    local inventory = pso.read_u32(playerAddr + 0x2B4)
+    local meseta = pso.read_u32(inventory + 0x20)
     
     local mesetaStr = string.format("%i Meseta", meseta)
     local progress = meseta / options.mcMesetaGoal
@@ -158,7 +159,7 @@ local function init()
   
   return {
     name = "Meseta Count",
-    version = "1.1.0",
+    version = "1.1.1",
     author = "Seth Clydesdale",
     description = "Displays the total Meseta you're carrying.",
     present = present
