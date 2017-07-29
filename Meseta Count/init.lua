@@ -15,8 +15,10 @@ if optionsLoaded then
   options.mcNoTitleBar = options.mcNoTitleBar or ""
   options.mcNoResize = options.mcNoResize or ""
   options.mcTransparent = options.mcTransparent == nil and true or options.mcTransparent
-  options.mcMesetaGoal = options.mcMesetaGoal or 1000
   options.fontScale = options.fontScale or 1.0
+  options.mcMesetaGoal = options.mcMesetaGoal or 100000
+  options.mcMesetaGoalBar = options.mcMesetaGoalBar == nil and true or options.mcMesetaGoalBar
+  options.mcColorizeText = options.mcColorizeText == nil and true or options.mcColorizeText
 else
   options = {
     configurationEnableWindow = true,
@@ -25,8 +27,10 @@ else
     mcNoTitleBar = "",
     mcNoResize = "",
     mcTransparent = false,
-    mcMesetaGoal = 1000,
     fontScale = 1.0,
+    mcMesetaGoal = 100000,
+    mcMesetaGoalBar = true,
+    mcColorizeText = true,
   }
 end
 
@@ -44,8 +48,10 @@ local function SaveOptions(options)
     io.write(string.format("  mcNoTitleBar = \"%s\",\n", options.mcNoTitleBar))
     io.write(string.format("  mcNoResize = \"%s\",\n", options.mcNoResize))
     io.write(string.format("  mcTransparent = %s,\n", tostring(options.mcTransparent)))
-    io.write(string.format("  mcMesetaGoal = %s,\n", tostring(options.mcMesetaGoal)))
     io.write(string.format("  fontScale = %s,\n", tostring(options.fontScale)))
+    io.write(string.format("  mcMesetaGoal = %s,\n", tostring(options.mcMesetaGoal)))
+    io.write(string.format("  mcMesetaGoalBar = %s,\n", tostring(options.mcMesetaGoalBar)))
+    io.write(string.format("  mcColorizeText = %s,\n", tostring(options.mcColorizeText)))
     io.write("}\n")
 
     io.close(file)
@@ -63,11 +69,44 @@ local showMesetaCount = function()
   if ptrAddr ~= 0 then
     local mesetaAddr = pso.read_u32(ptrAddr + 0x2B4)
     local meseta = pso.read_u32(mesetaAddr + 0x20)
+    
+    local mesetaStr = string.format("%i Meseta", meseta)
+    local progress = meseta / options.mcMesetaGoal
+    
+    -- don't let progress exceed 100%
+    if progress > 1 then
+      progress = 1
+    end
 
-    -- text will be yellow if meseta > 1000||goal otherwise it'll go from yellow to orange to red
-    imgui.TextColored(1, meseta / options.mcMesetaGoal, 0.0, 1, string.format("%i Meseta", meseta))
+    -- show the meseta count colorized or as plaintext
+    if options.mcColorizeText then
+      -- text will be yellow if meseta > 100000||goal otherwise it'll go from yellow to orange to red
+      imgui.TextColored(1, progress, 0, 1, mesetaStr)
+    else
+      imgui.Text(mesetaStr)
+    end
+    
+    -- display a progress bar if enabled
+    if options.mcMesetaGoalBar then
+      -- progress bar will change color based on state
+      local color = progress == 1 and {0, 0.7, 0} or {1, 0.7, 0}
+      -- yellow (incomplete)
+      -- green (complete)
+      
+      imgui.PushStyleColor("PlotHistogram", color[1], color[2], color[3], 1)
+      imgui.ProgressBar(progress, 100, 3)
+      imgui.PopStyleColor()
+    end
+    
+  -- show a placeholder until the data can be retrieved
   else
-    imgui.TextColored(1, 0, 0, 1, "0 Meseta")
+    local placeholder = "0 Meseta"
+    
+    if options.mcColorizeText then
+      imgui.TextColored(1, 0, 0, 1, placeholder)
+    else
+      imgui.Text(placeholder)
+    end
   end
 end
 
@@ -119,7 +158,7 @@ local function init()
   
   return {
     name = "Meseta Count",
-    version = "1.0.2",
+    version = "1.1.0",
     author = "Seth Clydesdale",
     description = "Displays the total Meseta you're carrying.",
     present = present

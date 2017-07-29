@@ -39,13 +39,23 @@ local function ConfigurationWindow(configuration)
       this.changed = true
     end
     
+    success, _configuration.fontScale = imgui.InputFloat("Font Scale", _configuration.fontScale)
+    if success then
+      this.changed = true
+    end
+    
     success, _configuration.mcMesetaGoal = imgui.InputInt("Meseta Goal", _configuration.mcMesetaGoal)
     if success then
       this.changed = true
     end
     
-    success, _configuration.fontScale = imgui.InputFloat("Font Scale", _configuration.fontScale)
-    if success then
+    if imgui.Checkbox("Meseta Goal Bar", _configuration.mcMesetaGoalBar) then
+      _configuration.mcMesetaGoalBar = not _configuration.mcMesetaGoalBar
+      this.changed = true
+    end
+    
+    if imgui.Checkbox("Colorize Text", _configuration.mcColorizeText) then
+      _configuration.mcColorizeText = not _configuration.mcColorizeText
       this.changed = true
     end
   end

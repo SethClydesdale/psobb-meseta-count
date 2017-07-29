@@ -7,7 +7,12 @@ This is a simple addon for https://github.com/HybridEidolon/psobbaddonplugin. It
 3. Drag and drop the **Meseta Count** addon into the /addons directory in your PSOBB folder.
 
 ### Preview
-[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13111.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13111.jpg)
+[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13113.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13113.jpg)
 
-### Notes
-This is my first addon for PSOBB, so it's more of a test to see how things work. Pull requests are welcome if you want to make any improvements. ^^
+### Change Log
+
+#### v1.1.0
+- Added Meseta Goal progress bar to help visualize how close you are to your goal. The bar will turn green when you've hit your goal.
+- Added Colorize Text so the user can choose between the standard white text or colored text.
+- Fixed initial window height and width.
+- Increased initial Meseta goal from 1,000 to 100,000.
