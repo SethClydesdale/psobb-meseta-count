@@ -49,7 +49,7 @@ local function ConfigurationWindow(configuration)
       this.changed = true
     end
     
-    if imgui.Checkbox("Meseta Goal Bar", _configuration.mcMesetaGoalBar) then
+    if imgui.Checkbox("Meseta Goal Progress Bar", _configuration.mcMesetaGoalBar) then
       _configuration.mcMesetaGoalBar = not _configuration.mcMesetaGoalBar
       this.changed = true
     end

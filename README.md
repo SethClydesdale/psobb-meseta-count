@@ -7,7 +7,7 @@ This is a simple addon for https://github.com/HybridEidolon/psobbaddonplugin. It
 3. Drag and drop the **Meseta Count** addon into the /addons directory in your PSOBB folder.
 
 ### Preview
-[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13113.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13113.jpg)
+[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13114.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13114.jpg)
 
 ### Change Log
 
