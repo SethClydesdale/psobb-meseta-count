@@ -11,6 +11,9 @@ This is a simple addon for https://github.com/HybridEidolon/psobbaddonplugin. It
 
 ### Change Log
 
+#### v1.1.2
+- Fixed not being able to resize the window.
+
 #### v1.1.1
 - Fixed incorrect Meseta value displaying when the player was the 2nd, 3rd, etc.. player in the lobby. (thanks to soly and staphen for helping me find the correct index)
 
