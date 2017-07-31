@@ -7,9 +7,19 @@ This is a simple addon for https://github.com/HybridEidolon/psobbaddonplugin. It
 3. Drag and drop the **Meseta Count** addon into the /addons directory in your PSOBB folder.
 
 ### Preview
-[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13114.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13114.jpg)
+[![](https://i11.servimg.com/u/f11/18/21/41/30/pso13118.jpg)](https://i11.servimg.com/u/f11/18/21/41/30/pso13118.jpg)
 
 ### Change Log
+
+#### v1.2.0
+- Added High Contrast Color option to configuration. You can choose to enable this option when "Colorize Text" is disabled.
+- Added digit grouping configuration option to make reading the Meseta value easier. (100000 --> 100,000 when enabled)
+- Added Meseta label and label position configuration options. This'll let you change the display from "N Meseta" to "Meseta: N" or "$N" and so on.
+- Added position and size options to configuration.
+- Added height and width options for the progress bar.
+- Added progress bar to placeholder.
+- Added tooltip to Meseta count and progress bar. The tooltip will show your CURRENT_MESETA/GOAL_MESETA.
+- Fixed window width and height not being maintained.
 
 #### v1.1.2
 - Fixed not being able to resize the window.
