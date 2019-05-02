@@ -64,6 +64,15 @@ local function ConfigurationWindow(configuration, customTheme)
         end
         this.changed = true
       end
+
+      if imgui.Checkbox("No move", _configuration.mcNoMove == "NoMove") then
+        if _configuration.mcNoMove == "NoMove" then
+          _configuration.mcNoMove = ""
+        else
+          _configuration.mcNoMove = "NoMove"
+        end
+        this.changed = true
+      end
       
       if imgui.IsItemHovered() then
         imgui.SetTooltip("Removes the resize handle from the window.")
