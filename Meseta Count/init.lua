@@ -17,6 +17,7 @@ if optionsLoaded then
   options.useCustomTheme = options.useCustomTheme == nil and false or options.useCustomTheme
   options.mcNoTitleBar = options.mcNoTitleBar or ""
   options.mcNoResize = options.mcNoResize or ""
+  options.mcNoMove = options.mcNoMove or ""
   options.mcTransparent = options.mcTransparent == nil and false or options.mcTransparent
   options.fontScale = options.fontScale or 1.0
   
@@ -59,6 +60,7 @@ else
     useCustomTheme = false,
     mcNoTitleBar = "",
     mcNoResize = "",
+    mcNoMove = "",
     mcTransparent = false,
     fontScale = 1.0,
     
@@ -109,6 +111,7 @@ local function SaveOptions(options)
     io.write(string.format("  useCustomTheme = %s,\n", tostring(options.useCustomTheme)))
     io.write(string.format("  mcNoTitleBar = \"%s\",\n", options.mcNoTitleBar))
     io.write(string.format("  mcNoResize = \"%s\",\n", options.mcNoResize))
+    io.write(string.format("  mcNoMove = \"%s\",\n", options.mcNoMove))
     io.write(string.format("  mcTransparent = %s,\n", tostring(options.mcTransparent)))
     io.write(string.format("  fontScale = %s,\n", tostring(options.fontScale)))
     
@@ -330,7 +333,7 @@ local function present()
       imgui.SetNextWindowSize(options.mcWidth, options.mcHeight, "Always");
     end
     
-    if imgui.Begin("Meseta Count", nil, { options.mcNoTitleBar, options.mcNoResize }) then
+    if imgui.Begin("Meseta Count", nil, { options.mcNoTitleBar, options.mcNoResize, options.mcNoMove }) then
       imgui.SetWindowFontScale(options.fontScale)
       showMesetaCount();
       imgui.SetWindowFontScale(1)
@@ -367,7 +370,7 @@ local function init()
   
   return {
     name = "Meseta Count",
-    version = "1.3.0",
+    version = "1.3.1",
     author = "Seth Clydesdale",
     description = "Displays the total Meseta you're carrying.",
     present = present
