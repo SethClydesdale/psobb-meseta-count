@@ -370,7 +370,7 @@ local function init()
   
   return {
     name = "Meseta Count",
-    version = "1.3.0",
+    version = "1.3.1",
     author = "Seth Clydesdale",
     description = "Displays the total Meseta you're carrying.",
     present = present
