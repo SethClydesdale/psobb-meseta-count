@@ -24,6 +24,9 @@ The closest ASCII character that I found which almost looks like a Diamond (or M
 
 ### Change Log
 
+#### v1.3.1
+- Added option to block window movement (special thanks to [raohmaru](https://github.com/SethClydesdale/psobb-meseta-count/pull/1) for adding this).
+
 #### v1.3.0
 - Added Gains and Losses indicator. For example : picking up 100 meseta will show +100, and buying an item worth 500 will show -500. This can be toggled in the configuration. You may need to increase the width of the Meseta Count window to about 180 if you're currently using this addon.
 - Added **Show Placeholder** configuration option. This will let you turn the placeholder that shows when your Meseta isn't available on or off.
